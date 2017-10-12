@@ -20,7 +20,7 @@ class main {
 		// Checking if the file doesnt already exist, and that it is of the correct file format
 		if (!$this->isFileAlreadyExisting($target_file) && $this->isCorrectFileFormat($fileType)){
 			echo "Log : changing the mode to allow write permissions";
-			move_uploaded_file($_FILES["fileToUpload"]["name"], $target_file);
+			echo move_uploaded_file($_FILES["fileToUpload"]["name"], $target_file);
 			chmod($target_file, 0666);
 			echo "Log : Mode changed";
 		    if (move_uploaded_file($_FILES["fileToUpload"]["name"], $target_file)) {
