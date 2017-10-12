@@ -16,7 +16,7 @@ class main {
 
 	// Main function that handles file uploading
 	function performFileUpload($target_file, $uploadOk, $fileType){
-
+		echo "Log 1";
 		// Checking if the file doesnt already exist, and that it is of the correct file format
 		if (!isFileAlreadyExisting($target_file) && isCorrectFileFormat($fileType)){
 		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -34,6 +34,7 @@ class main {
 
 			header('Location: http://www.yahoo.com/');
 		}
+		echo "Log 2";
 
 	}
 
