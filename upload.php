@@ -1,6 +1,6 @@
 <?php
 
-ini_set('file_uploads', '1');
+ini_get_all();
 
 $target_dir =  __DIR__ . "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
