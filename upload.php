@@ -18,7 +18,7 @@ class main {
 	function performFileUpload($target_file, $uploadOk, $fileType){
 		echo "Log 1";
 		// Checking if the file doesnt already exist, and that it is of the correct file format
-		if (!isFileAlreadyExisting($target_file) && isCorrectFileFormat($fileType)){
+		if (!$this->isFileAlreadyExisting($target_file) && $this->isCorrectFileFormat($fileType)){
 
 			echo "in if statement";
 
