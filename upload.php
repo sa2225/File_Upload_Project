@@ -19,6 +19,9 @@ class main {
 		echo "Log 1";
 		// Checking if the file doesnt already exist, and that it is of the correct file format
 		if (!isFileAlreadyExisting($target_file) && isCorrectFileFormat($fileType)){
+
+			echo "in if statement";
+
 		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 		        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 		    } else {
@@ -41,7 +44,7 @@ class main {
 	//Check if the file exists
 	function isFileAlreadyExisting($target_file){
 		
-
+		echo "Log Checking existing file...";
 		if (file_exists($target_file)) {
 		    echo "File already exists.";
 		    return true;
@@ -52,6 +55,8 @@ class main {
 
 	// Allow certain file formats
 	function isCorrectFileFormat($fileType){
+
+		echo "Log Checking format...";
 		if($fileType != "csv" ) {
 	    	echo "File format is incorrect";
 	    	return false;
