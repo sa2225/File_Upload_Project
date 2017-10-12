@@ -1,7 +1,7 @@
 <?php
 
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
+echo ini_get('display_errors');
+
 
 /*ini_set('file_uploads', 'On');*/
 
