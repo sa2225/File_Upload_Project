@@ -1,6 +1,6 @@
 <?php
 
-echo ini_get('display_errors');
+
 
 
 /*ini_set('file_uploads', 'On');*/
@@ -18,6 +18,7 @@ class main {
     
     public function __construct() {
     	echo "Upload handler start";
+    	echo ini_get('display_errors');
 	} 
 
 	// Main function that handles file uploading
