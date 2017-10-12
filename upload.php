@@ -1,9 +1,6 @@
 <?php
 
-
-
-
-/*ini_set('file_uploads', 'On');*/
+print_r(ini_get_all());
 
 $target_dir =  __DIR__ . "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -18,7 +15,7 @@ class main {
     
     public function __construct() {
     	echo "Upload handler start";
-    	echo ini_get('display_errors');
+    	print_r(ini_get_all());
 	} 
 
 	// Main function that handles file uploading
