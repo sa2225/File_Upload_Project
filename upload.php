@@ -28,14 +28,12 @@ class main {
 		        echo "Sorry, there was an error uploading your file.";
 		    }
 
-		    header('Location: http://www.google.com/');
+		    //header('Location: http://www.google.com/');
 
 		} 
 		// If file aready exists or is of incorrect format
 		else {
 			echo "Sorry, there was an error uploading your file.";
-
-			header('Location: http://www.yahoo.com/');
 		}
 		echo "Log 2";
 
