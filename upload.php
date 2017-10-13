@@ -5,6 +5,9 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 $target_dir =  __DIR__ . "/uploads/";
+
+chmod(__DIR__ . "/uploads", 0777);
+
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
