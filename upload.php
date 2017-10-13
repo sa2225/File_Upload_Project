@@ -21,8 +21,6 @@ class main {
 	function performFileUpload($target_file, $uploadOk, $fileType){
 		// Checking if the file doesnt already exist, and that it is of the correct file format
 		if (!$this->isFileAlreadyExisting($target_file) && $this->isCorrectFileFormat($fileType)){
-			
-			echo move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 
 		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 		        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
