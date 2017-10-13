@@ -5,13 +5,9 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 $target_dir =  __DIR__ . "/uploads/";
-
-chmod(__DIR__ . "/uploads", 0777);
-
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
-
 
 $obj = new main();
 $obj->performFileUpload($target_file, $uploadOk, $fileType);
@@ -19,19 +15,15 @@ $obj->performFileUpload($target_file, $uploadOk, $fileType);
 class main {
     
     public function __construct() {
-    	echo "Upload handler start";
 	} 
 
 	// Main function that handles file uploading
 	function performFileUpload($target_file, $uploadOk, $fileType){
-		echo "Log 1";
+
 		// Checking if the file doesnt already exist, and that it is of the correct file format
 		if (!$this->isFileAlreadyExisting($target_file) && $this->isCorrectFileFormat($fileType)){
 			
-			echo move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-			//chmod($target_file, 0666);
-			echo "Log : Mode changed";
-		    if (move_uploaded_file($_FILES["fileToUpload"]["name"], $target_file)) {
+		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 		        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 		    } else {
 		        echo "Sorry, there was an error uploading your file.";
@@ -44,14 +36,11 @@ class main {
 		else {
 			echo "Sorry, there was an error uploading your file.";
 		}
-		echo "Log 2";
 
 	}
 
 	//Check if the file exists
 	function isFileAlreadyExisting($target_file){
-		
-		echo "Log Checking existing file...";
 		if (file_exists($target_file)) {
 		    echo "File already exists.";
 		    return true;
@@ -62,8 +51,6 @@ class main {
 
 	// Allow certain file formats
 	function isCorrectFileFormat($fileType){
-
-		echo "Log Checking format...";
 		if($fileType != "csv" ) {
 	    	echo "File format is incorrect";
 	    	return false;
@@ -73,7 +60,6 @@ class main {
 	}
 
 	public function __destruct() {
-	    echo "Upload handler end";
     }
 
 }
