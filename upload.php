@@ -23,7 +23,7 @@ class main {
 		// Checking if the file doesnt already exist, and that it is of the correct file format
 		if (!$this->isFileAlreadyExisting($target_file) && $this->isCorrectFileFormat($fileType)){
 			
-		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+		    if (move_uploaded_file($_FILES["fileToUpload"]["name"], $target_file)) {
 		        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 		    } else {
 		        echo "Sorry, there was an error uploading your file.";
