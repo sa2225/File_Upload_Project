@@ -19,11 +19,12 @@ class main {
 
 	// Main function that handles file uploading
 	function performFileUpload($target_file, $uploadOk, $fileType){
-
 		// Checking if the file doesnt already exist, and that it is of the correct file format
 		if (!$this->isFileAlreadyExisting($target_file) && $this->isCorrectFileFormat($fileType)){
 			
-		    if (move_uploaded_file($_FILES["fileToUpload"]["name"], $target_file)) {
+			echo move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+
+		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 		        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 		    } else {
 		        echo "Sorry, there was an error uploading your file.";
@@ -41,6 +42,7 @@ class main {
 
 	//Check if the file exists
 	function isFileAlreadyExisting($target_file){
+		
 		if (file_exists($target_file)) {
 		    echo "File already exists.";
 		    return true;
@@ -51,6 +53,7 @@ class main {
 
 	// Allow certain file formats
 	function isCorrectFileFormat($fileType){
+
 		if($fileType != "csv" ) {
 	    	echo "File format is incorrect";
 	    	return false;
