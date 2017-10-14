@@ -7,7 +7,8 @@ $obj = new main();
 $obj->displayFileContents($target_file);
 
 class main {
-public function __construct() {
+	
+	public function __construct() {
 	} 
 
 	// Main function that handles displaying the file
@@ -17,8 +18,6 @@ public function __construct() {
 		echo "file opened";
 		$file_contents_array = fgetcsv($file));
 		echo "array created";
-		print_r($file_contents_array);
-
 	}
 
 	public function __destruct() {
