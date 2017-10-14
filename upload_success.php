@@ -7,7 +7,7 @@ $obj = new main();
 $obj->displayFileContents($target_file);
 
 class main {
-	
+
 	public function __construct() {
 	} 
 
@@ -16,7 +16,7 @@ class main {
 		echo "in function";
 		$file = fopen($target_file,"r");
 		echo "file opened";
-		$file_contents_array = fgetcsv($file));
+		print_r(fgetcsv($file));
 		echo "array created";
 	}
 
