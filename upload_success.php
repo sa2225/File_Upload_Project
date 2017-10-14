@@ -13,11 +13,21 @@ class main {
 
 	// Main function that handles displaying the file
 	function displayFileContents($target_file){
-		echo "in function";
+		
 		$file = fopen($target_file,"r");
-		echo "file opened";
+		
 		$file_contents = fgetcsv($file);
-		echo "stored";
+		
+		echo "<html><body><table>\n\n";
+		while (($line = $file_contents) !== false) {
+		        echo "<tr>";
+		        foreach ($line as $cell) {
+		                echo "<td>" . htmlspecialchars($cell) . "</td>";
+		        }
+		        echo "</tr>\n";
+		}
+		fclose($file);
+		echo "\n</table></body></html>";
 	}
 
 	public function __destruct() {
