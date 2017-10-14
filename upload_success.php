@@ -1,5 +1,6 @@
 <?php
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 $target_file =  __DIR__ . "/uploads/" . $_GET['fileName'];
 
 $obj = new main();
