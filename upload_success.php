@@ -2,10 +2,27 @@
 
 $target_file =  __DIR__ . "/uploads/" . $_GET['fileName'];
 
-$file = fopen($target_file,"r");
+$obj = new main();
+$obj->displayFileContents($target_file, $fileType);
 
-$file_contents_array = fgetcsv($file));
+class main {
+public function __construct() {
+	} 
 
-print_r($file_contents_array);
+	// Main function that handles displaying the file
+	function displayFileContents($target_file){
+		echo "in function";
+		$file = fopen($target_file,"r");
+		echo "file opened";
+		$file_contents_array = fgetcsv($file));
+		echo "array created";
+		print_r($file_contents_array);
+
+	}
+
+	public function __destruct() {
+    }
+
+}
 
 ?>
