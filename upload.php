@@ -28,7 +28,7 @@ class main {
 		        echo "Sorry, there was an error uploading your file.";
 		    }
 
-		    header('Location: https://web.njit.edu/~sa2225/file_upload_project/file_upload_project/upload_success.php?fileName=' . basename($_FILES["fileToUpload"]["name"]));
+		    header('Location: https://web.njit.edu/~sa2225/file_upload_project/file_upload_project/upload_success.php?fileName=' . urlencode(basename($_FILES["fileToUpload"]["name"])));
 
 		} 
 		// If file aready exists or is of incorrect format
