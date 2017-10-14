@@ -16,8 +16,8 @@ class main {
 		echo "in function";
 		$file = fopen($target_file,"r");
 		echo "file opened";
-		print_r(fgetcsv($file));
-		echo "array created";
+		$file_contents = fgetcsv($file);
+		echo "stored";
 	}
 
 	public function __destruct() {
