@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 $target_file =  __DIR__ . "/uploads/" . $_GET['fileName'];
 
 $obj = new main();
-$obj->displayFileContents($target_file, $fileType);
+$obj->displayFileContents($target_file);
 
 class main {
 public function __construct() {
