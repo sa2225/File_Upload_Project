@@ -16,10 +16,8 @@ class main {
 		
 		$file = fopen($target_file,"r");
 		
-		$file_contents = fgetcsv($file);
-		
 		echo "<html><body><table>\n\n";
-		while (($line = $file_contents) !== false) {
+		while (($line = fgetcsv($file)) !== false) {
 		        echo "<tr>";
 		        foreach ($line as $cell) {
 		                echo "<td>" . htmlspecialchars($cell) . "</td>";
