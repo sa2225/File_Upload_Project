@@ -15,9 +15,9 @@ public function __construct() {
 		echo "in function";
 		$file = fopen($target_file,"r");
 		echo "file opened";
-		/*$file_contents_array = fgetcsv($file));
+		$file_contents_array = fgetcsv($file));
 		echo "array created";
-		print_r($file_contents_array);*/
+		print_r($file_contents_array);
 
 	}
 
