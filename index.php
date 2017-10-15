@@ -68,28 +68,32 @@ abstract class page {
 
 class uploadform extends page
 {
-
+	// Generate and display the upload form
     public function get()
     {
 		$form = '<div class="divmidfloater">';
  		$form .= '<h1>View Your CSV files!</h1><br><br>';
  		$form .= '<h3>Please upload your CSV below to view it:</h3><br><br>';
  		$form .= '<form enctype="multipart/form-data" method="POST" action="index.php?page=uploadform">';
- 		$form .= '<input type="file" name="fileToUpload" id="fileToUpload"><br><br>';
+ 		$form .= '<input type="file" name="fileToUpload" id="fileToUpload" accept=".csv"><br><br>';
         $form .= '<input type="submit" value="Upload & View" name="submit">';
         $form .= '</form> ';
         $this->html .= $form;
     }
 
+    // Handle the submission of the form and uploading of the file
     public function post() {
+
+    	// Defining the target directory where the file will be stored
         $target_dir =  __DIR__ . "/uploads/";
+
+        // Defining the full path - target directory + filename with extension
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-		$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
-		$this->performFileUpload($target_file, $fileType);
+		$this->performFileUpload($target_file);
     }
 
     // Main function that handles file uploading
-	private function performFileUpload($target_file, $fileType){
+	private function performFileUpload($target_file){
 		// Checking if the file doesnt already exist, and that it is of the correct file format
 		if (!$this->isFileAlreadyExisting($target_file)){
 			// this command uploads the file to the directory specified, and returns true if successful
