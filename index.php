@@ -30,12 +30,12 @@ class main {
         //instantiate the class that is being requested
          $page = new $pageRequest;
 
-/*
+
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
             $page->get();
         } else {
             $page->post();
-        }*/
+        }
 
     }
 
@@ -57,13 +57,13 @@ abstract class page {
         print_r($this->html);
     }
 
-/*    public function get() {
+	public function get() {
         
     }
 
     public function post() {
         print_r($_POST);
-    }*/
+    }
 }
 
 class uploadform extends page
