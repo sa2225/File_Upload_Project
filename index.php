@@ -133,10 +133,7 @@ class uploadform extends page
 
 
 
-class uploadsuccess extends page {
-
-	echo 'TESTING';
-}
+class uploadsuccess extends page {}
 
 
 ?>
