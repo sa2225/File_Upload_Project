@@ -44,6 +44,7 @@ class main {
 abstract class page {
     protected $html;
 
+    // Loading up the style sheets
     public function __construct()
     {
         $this->html .= '<html>';
@@ -115,7 +116,7 @@ class uploadform extends page
 
 	//Check if the file exists
 	private function isFileAlreadyExisting($target_file){
-		
+		// Checking the existing file path 
 		if (file_exists($target_file)) {
 		    echo "File already exists.";
 		    return true;
@@ -127,6 +128,7 @@ class uploadform extends page
 
 class uploadsuccess extends page {
     
+    // Show initial messages for upload success and call function to generate table
     public function __construct(){
         $this->html .= '<html>';
         $this->html .= '<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">';
@@ -143,12 +145,14 @@ class uploadsuccess extends page {
         $this->displayFileContents($target_file);
     }
 
-	// Main function that handles displaying the file
+	// Main function that handles displaying the file by generating a table
 	private function displayFileContents($target_file){
 		
+		//Opened file stream
 		$file = fopen($target_file,"r");
-		
 		$this->html .= '<table>';
+
+		// Looping on the file to check if data lines exist - then print each value per line in a td
 		while (($line = fgetcsv($file)) !== false) {
 		        $this->html .= '<tr>';
 		        foreach ($line as $cell) {
@@ -156,9 +160,13 @@ class uploadsuccess extends page {
 		        }
 		        $this->html .= '</tr>';
 		}
+		// Closed file stream
 		fclose($file);
+
 		$this->html .= '</table>';
 	}
+
+	// Closing the HTML file
 	public function __destruct(){
         $this->html .= '</body></html>';
         print_r($this->html);
