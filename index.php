@@ -107,7 +107,7 @@ class uploadform extends page
 			// this command uploads the file to the directory specified, and returns true if successful
 		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) { 
 		        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-		        header('Location: https://web.njit.edu/~sa2225/file_upload_project/file_upload_project/index.php?page=uploadsuccess');
+		        header('Location: https://web.njit.edu/~sa2225/file_upload_project/file_upload_project/index.php?page=uploadsuccess&fileName=' . urlencode(basename($_FILES["fileToUpload"]["name"])));
 		    } else {
 		        echo "Sorry, there was an error uploading your file.";
 		    }
@@ -133,7 +133,36 @@ class uploadform extends page
 
 
 
-class uploadsuccess extends page {}
+class uploadsuccess extends page {
+    
+    public function __construct(){
+        $this->html .= '<html>';
+        $this->html .= '<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">';
+        $this->html .= '<link rel="stylesheet" href="styles.css">';
+        $this->html .= '<body>';
+		$target_file =  __DIR__ . "/uploads/" . $_REQUEST['fileName'];
+        $this->displayFileContents($target_file);
+    }
 
-
+	// Main function that handles displaying the file
+	function displayFileContents($target_file){
+		
+		$file = fopen($target_file,"r");
+		
+		echo "<html><body><table>\n\n";
+		while (($line = fgetcsv($file)) !== false) {
+		        echo "<tr>";
+		        foreach ($line as $cell) {
+		                echo "<td>" . htmlspecialchars($cell) . "</td>";
+		        }
+		        echo "</tr>\n";
+		}
+		fclose($file);
+		echo "\n</table></body></html>";
+	}
+	public function __destruct(){
+        $this->html .= '</body></html>';
+        print_r($this->html);
+    }
+}
 ?>
