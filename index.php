@@ -30,12 +30,12 @@ class main {
         //instantiate the class that is being requested
          $page = new $pageRequest;
 
-
+/*
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
             $page->get();
         } else {
             $page->post();
-        }
+        }*/
 
     }
 
@@ -57,13 +57,13 @@ abstract class page {
         print_r($this->html);
     }
 
-    public function get() {
-        echo 'default get message';
+/*    public function get() {
+        
     }
 
     public function post() {
         print_r($_POST);
-    }
+    }*/
 }
 
 class uploadform extends page
@@ -141,16 +141,16 @@ class uploadsuccess extends page {
 		
 		$file = fopen($target_file,"r");
 		
-		echo "<table>\n\n";
+		$this->html .= '<table>';
 		while (($line = fgetcsv($file)) !== false) {
-		        echo "<tr>";
+		        $this->html .= '<tr>';
 		        foreach ($line as $cell) {
-		                echo "<td>" . htmlspecialchars($cell) . "</td>";
+		                $this->html .=  '<td>' . htmlspecialchars($cell) . '</td>';
 		        }
-		        echo "</tr>\n";
+		        $this->html .= '</tr>';
 		}
 		fclose($file);
-		echo "\n</table>";
+		$this->html .= '\n</table>';
 	}
 	public function __destruct(){
         $this->html .= '</body></html>';
