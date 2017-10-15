@@ -78,51 +78,20 @@ abstract class page {
     }
 }
 
-class homepage extends page {
-
-    public function get() {
-
-        $form = '<form action="index.php" method="post">';
-        $form .= 'First name:<br>';
-        $form .= '<input type="text" name="firstname" value="Mickey">';
-        $form .= '<br>';
-        $form .= 'Last name:<br>';
-        $form .= '<input type="text" name="lastname" value="Mouse">';
-        $form .= '<input type="submit" value="Submit">';
-        $form .= '</form> ';
-
-       /* <div class="divmidfloater">    
-			<h1>View Your CSV files!</h1>
-			<br>
-			<br>	
-			<h3>Please upload your CSV below to view it:</h3>
-			<br>
-			<br>	
-			<form enctype="multipart/form-data" method="POST" action="upload.php">
-		      <input type="file" name="fileToUpload" id="fileToUpload" accept=".csv" />
-		      <br>
-		      <input type="submit" name="submitButton" value="Upload & View"> 
-		    </form>*/
-
-        $this->html .= 'homepage';
-        $this->html .= $form;
-    }
-
-}
-
 class uploadform extends page
 {
 
     public function get()
     {
-        $form = '<form action="index.php?page=uploadform" method="post"
-	enctype="multipart/form-data">';
-        $form .= '<input type="file" name="fileToUpload" id="fileToUpload">';
-        $form .= '<input type="submit" value="Upload Image" name="submit">';
+		$form = '<div class="divmidfloater">';
+ 		$form .= '<h1>View Your CSV files!</h1><br><br>';
+ 		$form .= '<h3>Please upload your CSV below to view it:</h3><br><br>';
+ 		$form .= '<form enctype="multipart/form-data" method="POST" action="index.php?page=uploadform">';
+ 		$form .= '<input type="file" name="fileToUpload" id="fileToUpload"><br>';
+        $form .= '<input type="submit" value="Upload Image" name="Upload & View">';
         $form .= '</form> ';
         $this->html .= '<h1>Upload Form</h1>';
         $this->html .= $form;
-
     }
 
     public function post() {
