@@ -1,10 +1,14 @@
+<html>
 <head>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	<style type="text/css">
+		body {font-family: 'Roboto', sans-serif;font-size: 12px;}
 		table tr:first-child{font-weight: bold;background-color: #7678ED; !important}
 		table tr:nth-child(even) {background-color: #F7B801;}
 		table {width: 100%;}
 	</style>
 </head>
+<body>
 <?php
 
 ini_set('display_errors', 1);
@@ -42,3 +46,5 @@ class main {
 }
 
 ?>
+</body>
+</html>
