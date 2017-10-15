@@ -151,14 +151,21 @@ class uploadsuccess extends page {
 		//Opened file stream
 		$file = fopen($target_file,"r");
 		$this->html .= '<table>';
-		
+		$firstRow = true;
 		// Looping on the file to check if data lines exist - then print each value per line in a td
 		while (($line = fgetcsv($file)) !== false) {
 	        $this->html .= '<tr>';
+	    	if($firstRow){
+				foreach ($line as $cell) {
+	                $this->html .=  '<th>' . htmlspecialchars($cell) . '</th>';
+		        }
+		        $firstRow = false;
+	    	} else {   
 		        foreach ($line as $cell) {
 	                $this->html .=  '<td>' . htmlspecialchars($cell) . '</td>';
 		        }
-		        $this->html .= '</tr>';
+	    	}
+	        $this->html .= '</tr>';
 		}
 		// Closed file stream
 		fclose($file);
