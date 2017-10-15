@@ -77,7 +77,7 @@ abstract class page {
     public function __destruct()
     {
         $this->html .= '</body></html>';
-        stringFunctions::printThis($this->html);
+        /*stringFunctions::printThis($this->html);*/
     }
 
     public function get() {
@@ -93,7 +93,7 @@ class homepage extends page {
 
     public function get() {
 
-        $form = '<form action="index2.php" method="post">';
+        $form = '<form action="index.php" method="post">';
         $form .= 'First name:<br>';
         $form .= '<input type="text" name="firstname" value="Mickey">';
         $form .= '<br>';
@@ -112,7 +112,7 @@ class uploadform extends page
 
     public function get()
     {
-        $form = '<form action="index2.php?page=uploadform" method="post"
+        $form = '<form action="index.php?page=uploadform" method="post"
 	enctype="multipart/form-data">';
         $form .= '<input type="file" name="fileToUpload" id="fileToUpload">';
         $form .= '<input type="submit" value="Upload Image" name="submit">';
