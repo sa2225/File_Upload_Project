@@ -1,8 +1,7 @@
 <head>
 	<style type="text/css">
-		table:first-child {font-weight: bold;}
-		table:first-child td {background-color: '#3D348B';}
-		table td:nth-child(even) {background-color: '#7678ED';}
+		table tr:first-child{font-weight: bold;background-color: #3D348B; !important}
+		table tr:nth-child(even) {background-color: #7678ED;}
 		table {width: 100%;}
 	</style>
 </head>
