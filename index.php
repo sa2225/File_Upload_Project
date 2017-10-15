@@ -154,20 +154,20 @@ class uploadsuccess extends page {
 		$firstRow = true;
 		// Looping on the file to check if data lines exist - then print each value per line in a td
 		while (($line = fgetcsv($file)) !== false) {
-				if($firstRow){
-					$this->html .= '<th>';
-				}else{
-		        	$this->html .= '<tr>';
-		        }
+			if($firstRow){
+				$this->html .= '<th>';
 		        foreach ($line as $cell) {
 		                $this->html .=  '<td>' . htmlspecialchars($cell) . '</td>';
 		        }
-		        if($firstRow){
-					$this->html .= '</th>';
-					$firstRow=false;
-				}else{
-		        	$this->html .= '</tr>';
+		        $this->html .= '</th>';
+		        $firstRow = false;
+			} else {
+		        $this->html .= '<tr>';
+		        foreach ($line as $cell) {
+		                $this->html .=  '<td>' . htmlspecialchars($cell) . '</td>';
 		        }
+		        $this->html .= '</tr>';
+	        }
 		}
 		// Closed file stream
 		fclose($file);
