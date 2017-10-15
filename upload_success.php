@@ -5,6 +5,7 @@
 		body {font-family: 'Roboto', sans-serif; }
 		table tr:first-child{font-weight: bold;background-color: #7678ED !important;font-size: 12px;}
 		table tr:nth-child(even) {background-color: #F7B801;font-size: 12px;}
+		table tr:nth-child(odd) {background-color: #E8EBE4;font-size: 12px;}
 		table {width: 100%;font-size: 12px;}
 		table, th, td {border: 1px solid black;border-collapse: collapse;} 
 	</style>
