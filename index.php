@@ -9,7 +9,8 @@
 			table tr:nth-child(odd) {background-color: #E8EBE4;font-size: 12px;}
 			table {width: 100%;font-size: 13px;}
 			table, th, td {border: 1px solid black;border-collapse: collapse;}
-			.divmidfloater {margin: 0 auto;}
+			.divmidfloater {margin: 0 auto; text-align: center;width: 50%;}
+			h1, h3 {text-align: center;}
 		</style>
 	</head>
 	<body>
