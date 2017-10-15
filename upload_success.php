@@ -1,4 +1,13 @@
+<head>
+	<style type="text/css">
+		table:first-child {font-weight: bold;}
+		table:first-child td {background-color: '#3D348B';}
+		table td:nth-child(even) {background-color: '#7678ED';}
+		table {width: 100%;}
+	</style>
+</head>
 <?php
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 $target_file =  __DIR__ . "/uploads/" . $_GET['fileName'];
