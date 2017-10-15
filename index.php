@@ -1,17 +1,6 @@
 
 <!-- 	<body>
-		<div class="divmidfloater">    
-			<h1>View Your CSV files!</h1>
-			<br>
-			<br>	
-			<h3>Please upload your CSV below to view it:</h3>
-			<br>
-			<br>	
-			<form enctype="multipart/form-data" method="POST" action="upload.php">
-		      <input type="file" name="fileToUpload" id="fileToUpload" accept=".csv" />
-		      <br>
-		      <input type="submit" name="submitButton" value="Upload & View"> 
-		    </form>
+		
 		</div>
   </body> -->
 
@@ -44,7 +33,7 @@ class main {
     {
         //print_r($_REQUEST);
         //set default page request when no parameters are in URL
-        $pageRequest = 'homepage';
+        $pageRequest = 'uploadform';
         //check if there are parameters
         if(isset($_REQUEST['page'])) {
             //load the type of page the request wants into page request
@@ -101,6 +90,20 @@ class homepage extends page {
         $form .= '<input type="text" name="lastname" value="Mouse">';
         $form .= '<input type="submit" value="Submit">';
         $form .= '</form> ';
+
+       /* <div class="divmidfloater">    
+			<h1>View Your CSV files!</h1>
+			<br>
+			<br>	
+			<h3>Please upload your CSV below to view it:</h3>
+			<br>
+			<br>	
+			<form enctype="multipart/form-data" method="POST" action="upload.php">
+		      <input type="file" name="fileToUpload" id="fileToUpload" accept=".csv" />
+		      <br>
+		      <input type="submit" name="submitButton" value="Upload & View"> 
+		    </form>*/
+
         $this->html .= 'homepage';
         $this->html .= $form;
     }
