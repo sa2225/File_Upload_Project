@@ -149,7 +149,7 @@ class uploadsuccess extends page {
 		        $this->html .= '</tr>';
 		}
 		fclose($file);
-		$this->html .= '\n</table>';
+		$this->html .= '</table>';
 	}
 	public function __destruct(){
         $this->html .= '</body></html>';
