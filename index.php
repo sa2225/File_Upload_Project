@@ -126,11 +126,13 @@ class uploadsuccess extends page {
         $this->html .= '<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">';
         $this->html .= '<link rel="stylesheet" href="styles.css">';
         $this->html .= '<body>';
+        $this->html .= '<div class="divmidfloater">';
         $this->html .= '<H1>Your Uploaded File</H1><br>';
         $this->html .= '<h3>File name: ';
         $this->html .= $_REQUEST['fileName'];
         $this->html .= '</h3><br><br>';
         $this->html .= '<input type="button" value="Upload another file" onclick="history.back()"><br><br>';
+        $this->html .= '</div>';
 		$target_file =  __DIR__ . "/uploads/" . $_REQUEST['fileName'];
         $this->displayFileContents($target_file);
     }
