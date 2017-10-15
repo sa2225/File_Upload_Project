@@ -97,7 +97,7 @@ class uploadform extends page
         $target_dir =  __DIR__ . "/uploads/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
-		performFileUpload($target_file, $fileType);
+		$this->performFileUpload($target_file, $fileType);
     }
 
     // Main function that handles file uploading
