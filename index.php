@@ -157,14 +157,14 @@ class uploadsuccess extends page {
 			if($firstRow){
 				$this->html .= '<th>';
 		        foreach ($line as $cell) {
-		                $this->html .=  '<td>' . htmlspecialchars($cell) . '</td>';
+	                $this->html .=  '<td>' . htmlspecialchars($cell) . '</td>';
 		        }
 		        $this->html .= '</th>';
-		        $firstRow = false;
+		        /*$firstRow = false;*/
 			} else {
 		        $this->html .= '<tr>';
 		        foreach ($line as $cell) {
-		                $this->html .=  '<td>' . htmlspecialchars($cell) . '</td>';
+	                $this->html .=  '<td>' . htmlspecialchars($cell) . '</td>';
 		        }
 		        $this->html .= '</tr>';
 	        }
