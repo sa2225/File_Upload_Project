@@ -77,7 +77,7 @@ abstract class page {
     public function __destruct()
     {
         $this->html .= '</body></html>';
-        /*stringFunctions::printThis($this->html);*/
+        print_r($this->html);
     }
 
     public function get() {
