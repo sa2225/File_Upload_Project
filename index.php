@@ -102,11 +102,13 @@ class uploadform extends page
 		        header('Location: https://web.njit.edu/~sa2225/file_upload_project/file_upload_project/index.php?page=uploadsuccess&fileName=' . urlencode(basename($_FILES["fileToUpload"]["name"])));
 		    } else {
 		        echo "Sorry, there was an error uploading your file.";
+				echo '<br><br><input type="button" value="Upload another file" onclick="history.back()">';
 		    }
 		} 
 		// If file aready exists or is of incorrect format
 		else {
 			echo "Sorry, there was an error uploading your file.";
+		    echo '<br><br><input type="button" value="Upload another file" onclick="history.back()">';
 		}
 
 	}
@@ -116,6 +118,7 @@ class uploadform extends page
 		
 		if (file_exists($target_file)) {
 		    echo "File already exists.";
+		    echo '<br><br><input type="button" value="Upload another file" onclick="history.back()">';
 		    return true;
 		} else {
 			return false;
