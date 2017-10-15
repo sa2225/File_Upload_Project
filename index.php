@@ -1,16 +1,4 @@
-
-<!-- 	<body>
-		
-		</div>
-  </body> -->
-
 <?php
-
-//turn on debugging messages
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
-
-
 //instantiate the program object
 
 //Class to load classes it finds the file when the progrm starts to fail for calling a missing class
@@ -140,16 +128,20 @@ class uploadsuccess extends page {
         $this->html .= '<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">';
         $this->html .= '<link rel="stylesheet" href="styles.css">';
         $this->html .= '<body>';
+        $this->html .= '<H1>Your Uploaded File:</H1><br>';
+        $this->html .= '<h3>File name:';
+        $this->html .= $_REQUEST['fileName'];
+        $this->html .= '</h3><br>';
 		$target_file =  __DIR__ . "/uploads/" . $_REQUEST['fileName'];
         $this->displayFileContents($target_file);
     }
 
 	// Main function that handles displaying the file
-	function displayFileContents($target_file){
+	private function displayFileContents($target_file){
 		
 		$file = fopen($target_file,"r");
 		
-		echo "<html><body><table>\n\n";
+		echo "<table>\n\n";
 		while (($line = fgetcsv($file)) !== false) {
 		        echo "<tr>";
 		        foreach ($line as $cell) {
@@ -158,7 +150,7 @@ class uploadsuccess extends page {
 		        echo "</tr>\n";
 		}
 		fclose($file);
-		echo "\n</table></body></html>";
+		echo "\n</table>";
 	}
 	public function __destruct(){
         $this->html .= '</body></html>';
