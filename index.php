@@ -118,7 +118,6 @@ class uploadform extends page
 		
 		if (file_exists($target_file)) {
 		    echo "File already exists.";
-		    echo '<br><br><input type="button" value="Upload another file" onclick="history.back()">';
 		    return true;
 		} else {
 			return false;
