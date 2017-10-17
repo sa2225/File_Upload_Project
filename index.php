@@ -100,7 +100,7 @@ class uploadform extends page
             // this command uploads the file to the directory specified, and returns true if successful
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) { 
                 echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-                header('Location: https://web.njit.edu/~sa2225/file_upload_project/file_upload_project/index.php?fileName=' . urlencode(basename($_FILES["fileToUpload"]["name"])));
+                header('Location: https://web.njit.edu/~sa2225/file_upload_project/file_upload_project/index.php?page=uploadsuccess&fileName=' . urlencode(basename($_FILES["fileToUpload"]["name"])));
             } else {
                 echo "Sorry, there was an error uploading your file.";
                 echo '<br><br><input type="button" value="Upload another file" onclick="history.back()">';
