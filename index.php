@@ -130,10 +130,6 @@ class uploadsuccess extends page {
     
     // Show initial messages for upload success and call function to generate table
     public function get(){
-        $this->html .= '<html>';
-        $this->html .= '<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">';
-        $this->html .= '<link rel="stylesheet" href="styles.css">';
-        $this->html .= '<body>';
         $this->html .= '<div class="divmidfloater">';
         $this->html .= '<H1>Your Uploaded File</H1><br>';
         $this->html .= '<h3>File name: ';
