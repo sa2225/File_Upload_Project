@@ -14,23 +14,24 @@ spl_autoload_register(array('Manage', 'autoload'));
 //instantiate the program object
 $obj = new main();
 
-
+// The main class that handles page requests
 class main {
 
     public function __construct()
     {
-        //print_r($_REQUEST);
         //set default page request when no parameters are in URL
         $pageRequest = 'uploadform';
+        
         //check if there are parameters
         if(isset($_REQUEST['page'])) {
             //load the type of page the request wants into page request
             $pageRequest = $_REQUEST['page'];
         }
+
         //instantiate the class that is being requested
          $page = new $pageRequest;
 
-
+        // Based on the type of request - GET/POST - Calls relative method
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
             $page->get();
         } else {
@@ -41,6 +42,7 @@ class main {
 
 }
 
+// Abstract class to hold common HTML tag loading for every displayed page
 abstract class page {
     protected $html;
 
@@ -53,7 +55,7 @@ abstract class page {
         $this->html .= '<body>';
     }
 
-    //Closing the tags
+    // Closing the tags
     public function __destruct()
     {
         $this->html .= '</body></html>';
@@ -69,6 +71,7 @@ abstract class page {
     }
 }
 
+// Upload form class that displays the form and handles the file uploading
 class uploadform extends page
 {
     // Generate and display the upload form
@@ -97,30 +100,37 @@ class uploadform extends page
 
     // Main function that handles file uploading
     private function performFileUpload($target_file){
+
         // Checking if the file doesnt already exist, and that it is of the correct file format
         if (!$this->isFileAlreadyExisting($target_file)){
+
             // this command uploads the file to the directory specified, and returns true if successful
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) { 
-                echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+
+                // Using header function to redirect to upload success page
                 header('Location: https://web.njit.edu/~sa2225/file_upload_project/file_upload_project/index.php?page=uploadsuccess&fileName=' . urlencode(basename($_FILES["fileToUpload"]["name"])));
+
             } else {
+
                 echo "Sorry, there was an error uploading your file.";
                 echo '<br><br><input type="button" value="Upload another file" onclick="history.back()">';
             }
         } 
         // If file aready exists or is of incorrect format
         else {
-            echo "Sorry, there was an error uploading your file.";
+
+            echo "Sorry, this file already exists on the server. Try uploading a different file:";
             echo '<br><br><input type="button" value="Upload another file" onclick="history.back()">';
+        
         }
 
     }
 
     //Check if the file exists
     private function isFileAlreadyExisting($target_file){
+
         // Checking the existing file path 
         if (file_exists($target_file)) {
-            echo "File already exists.";
             return true;
         } else {
             return false;
@@ -128,18 +138,23 @@ class uploadform extends page
     }
 }
 
+// Upload success class that handles the displaying of the file contents on successful upload
 class uploadsuccess extends page {
     
     // Show initial messages for upload success and call function to generate table
-    public function get(){
+    public function get() {
         $this->html .= '<div class="divmidfloater">';
         $this->html .= '<H1>Your Uploaded File</H1><br>';
         $this->html .= '<h3>File name: ';
-        $this->html .= $_REQUEST['fileName'];
+        $this->html .= $_REQUEST['fileName']; // Fetching the name of the uploaded file that was set in the request 
         $this->html .= '</h3><br><br>';
         $this->html .= '<input type="button" value="Upload another file" onclick="history.back()"><br><br>';
         $this->html .= '</div>';
+
+        // Building entire path to the file including filename and extension
         $target_file =  __DIR__ . "/uploads/" . $_REQUEST['fileName'];
+
+        // Calling function to display the file contents
         $this->displayFileContents($target_file);
     }
 
@@ -148,17 +163,26 @@ class uploadsuccess extends page {
         
         //Opened file stream
         $file = fopen($target_file,"r");
+
+        //Starting to build the table
         $this->html .= '<table>';
         $firstRow = true;
         // Looping on the file to check if data lines exist - then print each value per line in a td
+        // Used function fgetcsv to read CSV file
         while (($line = fgetcsv($file)) !== false) {
             $this->html .= '<tr>';
+
+            // For first row building th tag, and td for the rest
             if($firstRow){
+
+                //Loop to build individual cell
                 foreach ($line as $cell) {
                     $this->html .=  '<th>' . htmlspecialchars($cell) . '</th>';
                 }
                 $firstRow = false;
             } else {   
+
+                //Loop to build individual cell
                 foreach ($line as $cell) {
                     $this->html .=  '<td>' . htmlspecialchars($cell) . '</td>';
                 }
