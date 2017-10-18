@@ -52,6 +52,8 @@ abstract class page {
         $this->html .= '<link rel="stylesheet" href="styles.css">';
         $this->html .= '<body>';
     }
+
+    //Closing the tags
     public function __destruct()
     {
         $this->html .= '</body></html>';
